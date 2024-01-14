@@ -16,11 +16,22 @@ from django.views.generic import (
 
 class ItemCreateView(CreateView):
     template_name = "ToDo/item_create.html"
-    form_class = ItemForm
     queryset = Item.objects.all()
 
-    def form_valid(self, form: BaseModelForm) -> HttpResponse:
-        return super().form_valid(form)
+    def post(self, request, *args, **kwargs):
+        form = ItemForm(request.POST)
+
+        if form.is_valid():
+            # Process the form data and save it to the database
+            title = form.cleaned_data['title']
+            desc = form.cleaned_data['desc']
+
+            # Perform database operations here
+            Item.objects.create(title = title, desc = desc)
+
+            return render(request, self.template_name, {'form': form, 'success': True})
+
+        return render(request, self.template_name, {'form': form})
 
 class ItemListView(ListView):
     template_name = "ToDo/index.html"

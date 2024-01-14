@@ -13,6 +13,7 @@ from django.views.generic import (
 
 class ItemCreateView(CreateView):
     template_name = "ToDo/item_create.html"
+    queryset = Item.objects.all()
 
 class ItemListView(ListView):
     template_name = "ToDo/index.html"

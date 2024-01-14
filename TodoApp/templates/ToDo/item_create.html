@@ -2,9 +2,10 @@
 
 {% block content %}
 
-<form class="flex justify-evenly" method="post"> {% csrf_token %}
-    <input class="flex justify-center rounded bg-purple-500 text-white" type="text" placeholder="Write your task here">
-    <button class="bg-black text-purple-600 rounded">Add task</button>
+<form class="flex flex-col justify-center" method="post"> {% csrf_token %}
+    <input class="flex justify-center rounded bg-purple-500 text-white" type="text" placeholder="Write your task here" name="title">
+    <input class="flex justify-center rounded bg-purple-500 text-white" type="text" placeholder="Notes" name="desc">
+    <button class="bg-black text-purple-600 rounded" type="submit">Add task</button>
 </form>
 
 {% endblock %}

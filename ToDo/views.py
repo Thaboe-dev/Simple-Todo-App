@@ -12,18 +12,18 @@ from django.views.generic import (
 #class based views
 
 class ItemCreateView(CreateView):
-    template_name = "ToDo/index.html"
+    template_name = "ToDo/item_create.html"
 
 class ItemListView(ListView):
     template_name = "ToDo/index.html"
     queryset = Item.objects.all()
 
 class ItemUpdateView(UpdateView):
-    template_name =  "ToDo/index.html"
+    template_name =  "ToDo/item_update.html"
     queryset = Item.objects.all()
 
 class ItemDeleteView(DeleteView):
-    template_name = "ToDo/index.html"
+    template_name = "ToDo/item_delete.html"
     queryset = Item.objects.all()
 
     def get_success_url(self):

@@ -1,23 +1,17 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Todo App</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="bg-purple-300">
-    <div class="block text-white font-bold">
-        <h1 class="text-center mt-5">Todo App</h1>
-    </div>
+{% extends 'base.html' %}
+
+{% block content %}
     <form class="flex justify-evenly" method="post">
         <input class="flex justify-center rounded bg-purple-500 text-white" type="text" placeholder="Write your task here">
         <button class="bg-black text-purple-600 rounded">Add task</button>
     </form>
     <h2 class="text-black font-bold">All tasks</h2>
+
+    {% for item in object_list %}
     <div class="flex flex-col justify-center items-center">
         <div class="flex justify-evenly">
             <div class="flex justify-center bg-purple-300 rounded">
-                <p>create</p>
+                <p>{{item.title}}</p>
             </div>
             <div class="flex justify-center bg-white text-purple-950 font-bold rounded">
                 <p>Done</p>
@@ -29,5 +23,5 @@
             </button>
         </div>
     </div>
-</body>
-</html>
+
+{% endblock %}

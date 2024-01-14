@@ -5,6 +5,6 @@ from django.urls import reverse
 class Item(models.Model):
     title = models.CharField(max_length = 50)
     desc = models.CharField(max_length = 500)
-
-    def get_absolute_url(self):
-        return reverse("articles:article-detail", kwargs={"pk": self.id})
+    
+    def get_landing_url(self):
+        return reverse("todo:index")

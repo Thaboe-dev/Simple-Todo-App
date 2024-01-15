@@ -14,24 +14,20 @@ from django.views.generic import (
 # Create your views here.
 #class based views
 
-class ItemCreateView(CreateView):
-    template_name = "ToDo/item_create.html"
-    queryset = Item.objects.all()
+def ItemCreateView(request):
+    form = ItemForm(request.POST)
 
-    def post(self, request, *args, **kwargs):
-        form = ItemForm(request.POST)
-
-        if form.is_valid():
-            # Process the form data and save it to the database
+    if form.is_valid():
+        # Process the form data and save it to the database
             title = form.cleaned_data['title']
             desc = form.cleaned_data['desc']
 
             # Perform database operations here
             Item.objects.create(title = title, desc = desc)
 
-            return render(request, self.template_name, {'form': form, 'success': True})
+            return render(request, "ToDo/index.html")
 
-        return render(request, self.template_name, {'form': form})
+    return render(request, "ToDo/item_create.html")
 
 class ItemListView(ListView):
     template_name = "ToDo/index.html"

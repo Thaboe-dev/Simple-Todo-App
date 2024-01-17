@@ -10,4 +10,4 @@ class Item(models.Model):
         return reverse("todo:home")
     
     def get_landing_url(self):
-        return reverse("todo:index")
+        return reverse("todo:home")

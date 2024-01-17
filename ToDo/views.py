@@ -25,7 +25,7 @@ def ItemCreateView(request):
             # Perform database operations here
             Item.objects.create(title = title, desc = desc)
 
-            return render(request, "ToDo/index.html")
+            return redirect("http://127.0.0.1:8000/todo/")
 
     return render(request, "ToDo/item_create.html")
 
@@ -55,4 +55,4 @@ class ItemDeleteView(DeleteView):
     queryset = Item.objects.all()
 
     def get_success_url(self):
-        return reverse('todo:index')
+        return reverse('todo:home')

@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {%block content%}
+<div class="flex justify-center">
+    <form class="flex flex-col space-y-5 justify-center" action="." method="POST"> {% csrf_token %}
+        <h1>Are you sure you want to delete this item <p class="inline-block font-bold text-red-600">"{{ object.title }}"</p> ?</h1>
+        <div class="flex justify-center space-x-4"> 
+            <input class="flex justify-center text-center p-2 rounded bg-fuchsia-600 text-white cursor-pointer" type="submit" value="Yes" />
+            <a class="flex justify-center text-center p-2 rounded bg-fuchsia-100 text-red-700" href="{{object.get_landing_url}}">Cancel</a>
+        </div>
+    </form>
+</div>
 
-<form action="." method="POST"> {% csrf_token %}
-    <h1>Are you sure you want to delete this article "{{ object.title }}"?</h1>
-    <p><input type="submit" value="Yes" /><a href="{{object.get_landing_url}}">Cancel</a></p>
-</form>
 
 {% endblock %}

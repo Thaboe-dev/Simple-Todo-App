@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.http import HttpResponse
 from django.forms import BaseModelForm
@@ -33,9 +33,22 @@ class ItemListView(ListView):
     template_name = "ToDo/index.html"
     queryset = Item.objects.all()
 
-class ItemUpdateView(UpdateView):
-    template_name =  "ToDo/item_update.html"
-    queryset = Item.objects.all()
+def ItemUpdateView(request, id):
+    obj = get_object_or_404(Item, id=id)
+    form = ItemForm(request.POST, instance = obj)
+
+    if form.is_valid():
+        # Process the form data and save it to the database
+            title = form.cleaned_data['title']
+            desc = form.cleaned_data['desc']
+
+            # Perform database operations here
+            obj.title = title
+            obj.desc = desc
+            obj.save()
+            return redirect(obj)
+
+    return render(request, "ToDo/item_update.html", context={"object":obj})
 
 class ItemDeleteView(DeleteView):
     template_name = "ToDo/item_delete.html"

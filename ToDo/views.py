@@ -49,6 +49,8 @@ def ItemUpdateView(request, id):
             obj.title = title
             obj.desc = desc
             obj.save()
+            #success message
+            messages.success(request, "Item updated successfully")
             return redirect(obj)
 
     return render(request, "ToDo/item_update.html", context={"object":obj})

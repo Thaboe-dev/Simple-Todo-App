@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.forms import BaseModelForm
 from ToDo.forms import ItemForm
 from .models import Item
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import (
     CreateView,
     ListView,
@@ -50,9 +51,10 @@ def ItemUpdateView(request, id):
 
     return render(request, "ToDo/item_update.html", context={"object":obj})
 
-class ItemDeleteView(DeleteView):
+class ItemDeleteView(DeleteView, SuccessMessageMixin):
     template_name = "ToDo/item_delete.html"
     queryset = Item.objects.all()
+    success_message = "The Item was deleted successfully"
 
     def get_success_url(self):
         return reverse('todo:home')

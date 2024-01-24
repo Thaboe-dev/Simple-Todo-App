@@ -5,6 +5,7 @@ from django.forms import BaseModelForm
 from ToDo.forms import ItemForm
 from .models import Item
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.views.generic import (
     CreateView,
     ListView,
@@ -25,7 +26,8 @@ def ItemCreateView(request):
 
             # Perform database operations here
             Item.objects.create(title = title, desc = desc)
-
+            #success message
+            messages.success(request, "Item created successfully")
             return redirect("http://127.0.0.1:8000/todo/")
 
     return render(request, "ToDo/item_create.html")

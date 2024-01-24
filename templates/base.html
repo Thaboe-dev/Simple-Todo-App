@@ -10,6 +10,15 @@
     {% endcompress %}
 </head>
 <body class="bg-purple-300 relative">
+
+    {% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+
     <div class="block text-white font-bold">
         <h1 class="text-center my-5 text-4xl font-bold">Todo App</h1>
     </div>

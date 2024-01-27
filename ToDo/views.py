@@ -55,7 +55,7 @@ def ItemUpdateView(request, id):
 
     return render(request, "ToDo/item_update.html", context={"object":obj})
 
-class ItemDeleteView(DeleteView, SuccessMessageMixin):
+class ItemDeleteView(SuccessMessageMixin, DeleteView):
     template_name = "ToDo/item_delete.html"
     queryset = Item.objects.all()
     success_message = "The Item was deleted successfully"

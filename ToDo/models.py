@@ -5,7 +5,7 @@ from django.urls import reverse
 class Item(models.Model):
     title = models.CharField(max_length = 50)
     desc = models.CharField(max_length = 500)
-    status = models.CharField(default = "Pending")
+    status = models.CharField(max_length = 50, default = "Pending")
 
     def get_absolute_url(self):
         return reverse("todo:home")

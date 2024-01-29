@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 from django.forms import BaseModelForm
 from ToDo.forms import ItemForm
-from .models import Item, Complete
+from .models import Item
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.views.generic import (
@@ -65,4 +65,4 @@ class ItemDeleteView(SuccessMessageMixin, DeleteView):
     
 class CompleteItemListView(ListView):
     template_name = "ToDo/complete.html"
-    queryset = Complete.objects.all()
+    queryset = Item.objects.all()

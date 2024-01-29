@@ -34,7 +34,7 @@ def ItemCreateView(request):
 
 class ItemListView(ListView):
     template_name = "ToDo/index.html"
-    queryset = Item.objects.all()
+    queryset = Item.objects.filter(status = "Pending")
 
 def ItemUpdateView(request, id):
     obj = get_object_or_404(Item, id=id)
@@ -65,4 +65,4 @@ class ItemDeleteView(SuccessMessageMixin, DeleteView):
     
 class CompleteItemListView(ListView):
     template_name = "ToDo/complete.html"
-    queryset = Item.objects.all()
+    queryset = Item.objects.filter(status = "Complete")

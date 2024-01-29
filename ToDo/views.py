@@ -62,3 +62,7 @@ class ItemDeleteView(SuccessMessageMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('todo:home')
+    
+class CompleteItemListView(ListView):
+    template_name = "ToDo/complete.html"
+    queryset = Item.objects.all()

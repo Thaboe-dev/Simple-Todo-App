@@ -5,6 +5,7 @@ from django.urls import reverse
 class Item(models.Model):
     title = models.CharField(max_length = 50)
     desc = models.CharField(max_length = 500)
+    status = models.CharField(default = "Pending")
 
     def get_absolute_url(self):
         return reverse("todo:home")
@@ -12,6 +13,3 @@ class Item(models.Model):
     def get_landing_url(self):
         return reverse("todo:home")
     
-class Complete(models.Model):
-    title = models.CharField(max_length = 50)
-    desc = models.CharField(max_length = 500)

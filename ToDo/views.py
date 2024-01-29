@@ -65,4 +65,4 @@ class ItemDeleteView(SuccessMessageMixin, DeleteView):
     
 class CompleteItemListView(ListView):
     template_name = "ToDo/complete.html"
-    queryset = Item.objects.all()
+    queryset = Complete.objects.all()

@@ -11,3 +11,7 @@ class Item(models.Model):
     
     def get_landing_url(self):
         return reverse("todo:home")
+    
+class Complete(models.Model):
+    title = models.CharField(max_length = 50)
+    desc = models.CharField(max_length = 500)

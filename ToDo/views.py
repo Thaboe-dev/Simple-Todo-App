@@ -66,3 +66,19 @@ class ItemDeleteView(SuccessMessageMixin, DeleteView):
 class CompleteItemListView(ListView):
     template_name = "ToDo/complete.html"
     queryset = Item.objects.filter(status = "Complete")
+
+def EditStatusView(request, id):
+    obj = get_object_or_404(Item, id=id)
+    form = ItemForm(request.POST, instance = obj)
+
+    if form.is_valid():
+        # Process the form data and save it to the database
+            status = "Complete"
+
+            # Perform database operations here
+            obj.status = status
+            obj.save()
+            
+            return redirect(obj)
+
+    return render(request, "ToDo/item_update.html", context={"object":obj})

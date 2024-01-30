@@ -81,4 +81,4 @@ def EditStatusView(request, id):
             
             return redirect(obj)
 
-    return render(request, "ToDo/item_update.html", context={"object":obj})
+    return render(request, "ToDo/edit_status.html", context={"object":obj})

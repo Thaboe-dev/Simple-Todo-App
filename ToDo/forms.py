@@ -9,3 +9,9 @@ class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = ["title", "desc"]
+
+class EditStatusForm(forms.ModelForm):
+    
+    class Meta:
+        model = Item
+        fields = ["status"]

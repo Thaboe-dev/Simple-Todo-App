@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.http import HttpResponse
 from django.forms import BaseModelForm
-from ToDo.forms import ItemForm
+from ToDo.forms import EditStatusForm, ItemForm
 from .models import Item
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -69,7 +69,7 @@ class CompleteItemListView(ListView):
 
 def EditStatusView(request, id):
     obj = get_object_or_404(Item, id=id)
-    form = ItemForm(request.POST, instance = obj)
+    form = EditStatusForm(request.POST)
 
     if form.is_valid():
         # Process the form data and save it to the database

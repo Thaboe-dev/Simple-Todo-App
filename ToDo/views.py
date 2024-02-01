@@ -79,6 +79,8 @@ def EditStatusView(request, id):
             obj.status = status
             obj.save()
             
+            #success message
+            messages.success(request, "Item created successfully")
             return redirect(obj)
 
     return render(request, "ToDo/edit_status.html", context={"object":obj})

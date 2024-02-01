@@ -28,7 +28,7 @@ def ItemCreateView(request):
             Item.objects.create(title = title, desc = desc)
             #success message
             messages.success(request, "Item created successfully")
-            return redirect("http://127.0.0.1:8000/todo/")
+            return redirect("http://127.0.0.1:8000/")
 
     return render(request, "ToDo/item_create.html")
 

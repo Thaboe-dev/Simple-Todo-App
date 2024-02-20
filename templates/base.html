@@ -14,7 +14,7 @@
     {% if messages %}
     <ul class="messages">
     {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %} class="text-green-600">{{ message }}</li>
+    <li{% if message.tags %} class="{{ message.tags }} text-center uppercase font-sans "{% endif %}>{{ message }}</li>
     {% endfor %}
     </ul>
     {% endif %}
@@ -27,8 +27,6 @@
 
     {% endblock %}
     
-    <footer class="absolute bottom-0 right-full">
-        <p>&copy;2024. DevX&trade;</p>
-    </footer>
+    
 </body>
 </html>
